@@ -1,2 +1,2 @@
 # Projeto exemplo
-Atividate guiada
+Atividade guiada
