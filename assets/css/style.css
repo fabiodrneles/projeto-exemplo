@@ -1,0 +1,12 @@
+body {
+    margin: 0px;
+  }
+
+  img {
+    width: auto;
+    height: 42px;
+  }
+
+  header {
+    background: linear-gradient(45deg #fff, #3f59ed);
+  }
