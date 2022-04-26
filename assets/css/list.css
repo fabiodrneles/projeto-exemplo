@@ -2,3 +2,15 @@
     width: 100%;
 }
 
+.lista tr:nth-child(1) {
+    vertical-align: top;
+}
+
+tr:first-child {
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+
+
