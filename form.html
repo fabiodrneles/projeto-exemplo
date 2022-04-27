@@ -18,9 +18,24 @@
     </div>
     
     <section>
-        <form action="">
-            <input type="text" placeholder="Exemplo">
-            <input type="button" value="salvar">
+        <form>
+            <label for="name">Nome</label>
+            <input name="name" id="name" required type="text">
+
+            <label for="phone">Telefone</label>
+            <input name="phone" id="phone" required type="text">
+
+            <label>Experiência prévia</label>
+
+            <input name="xp" id="xp-yes" required type="radio">
+            <label for="xp-yes">Sim</label>
+            
+            <input name="xp" id="xp-no" required type="radio">
+            <label for="xp-no">Não</label>
+
+
+
+            <input type="submit" value="salvar">
         </form>
 
     </section>
