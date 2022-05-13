@@ -27,8 +27,6 @@
 
 function desenhaTabela () {
 
-
-        
     currentLines = [...document.querySelectorAll('table.lista tbody .dinamic-content')];
     currentLines.forEach((element) => {
         element.remove()
@@ -52,7 +50,7 @@ function desenhaTabela () {
         </td>
 
         <td>
-        <button onclick = "people.splice(${person}, 1)"> Excluir </button>
+            <button onclick = "people.splice(${person}, 1); desenhaTabela()"> Excluir </button>
         </td>
         </tr>`
 
