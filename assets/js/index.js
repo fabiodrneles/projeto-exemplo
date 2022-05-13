@@ -28,7 +28,7 @@ for ( person in people ) {
 
     document.querySelector('table.lista tbody').innerHTML +=
 
-    `<tr>
+    `<tr style = "background-color: ${((person % 2 == 0) ? '#eee' : '#fff')}" >
     <td>
        ${people[person].name}
     </td>
