@@ -20,7 +20,7 @@ let people = [
     {
         name: 'Luiz Paulo Barbosa',
         tel: '+55 (14) 9999-6666',
-        xp: false
+        xp: true
     }
 ]
 
@@ -38,7 +38,7 @@ for ( person in people ) {
     </td>
 
     <td>
-       ${(people[person].xp) ? 'Sim' : 'Não'}
+       ${(people[person].xp) ? '<span style = "color: green"> Sim </span>' : '<span style = "color: red"> Não </span>'}
     </td>
 
     <td>
@@ -47,3 +47,4 @@ for ( person in people ) {
     </tr>`
 
 }
+
