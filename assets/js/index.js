@@ -38,7 +38,7 @@ for ( person in people ) {
     </td>
 
     <td>
-       ${(people[person].xp) ? '<span style = "color: green"> Sim </span>' : '<span style = "color: red"> Não </span>'}
+       ${(people[person].xp) ? '<strong style = "color: green"> Sim </strong>' : '<strong style = "color: red"> Não </strong>'}
     </td>
 
     <td>
