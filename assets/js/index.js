@@ -5,9 +5,8 @@
     }else {
         var people = [];
     }
-    
-    //var people = 
 
+    
 function desenhaTabela () {
 
     currentLines = [...document.querySelectorAll('table.lista tbody .dinamic-content')];
