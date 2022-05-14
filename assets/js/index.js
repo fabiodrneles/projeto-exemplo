@@ -1,12 +1,11 @@
 
-    var peopleRaw = localStorage.getItem('people')
-    if(peopleRaw != null){
-        var people = JSON.parse(peopleRaw)
-    }else {
-        var people = [];
-    }
+var peopleRaw = localStorage.getItem('people')
+if(peopleRaw != null) {
+    var people = JSON.parse(localStorage.getItem('people'))
+} else {
+    var people = [];
+}
 
-    
 function desenhaTabela () {
 
     currentLines = [...document.querySelectorAll('table.lista tbody .dinamic-content')];
@@ -18,32 +17,34 @@ function desenhaTabela () {
 
         document.querySelector('table.lista tbody').innerHTML +=
 
-        `<tr class="dinamic-content" style = "background-color: ${((person % 2 == 0) ? '#eee' : '#fff')}" >
-        <td>
-        ${people[person].name}
-        </td>
+        `
+            <tr class="dinamic-content" style = "background-color: ${((person % 2 == 0) ? '#eee' : '#fff')}" >
+            <td>
+            ${people[person].name}
+            </td>
 
-        <td>
-        ${people[person].tel}
-        </td>
+            <td>
+            ${people[person].tel}
+            </td>
 
-        <td>
-        ${(people[person].xp) ? '<strong style = "color: green"> Sim </strong>' : '<strong style = "color: red"> Não </strong>'}
-        </td>
+            <td>
+            ${(people[person].xp) ? '<strong style = "color: green"> Sim </strong>' : '<strong style = "color: red"> Não </strong>'}
+            </td>
 
-        <td>
-            <button onclick = "deleteUser(${person})"> Excluir </button>
-        </td>
-        </tr>`
+            <td>
+                <button onclick = "deleteUser(${person})"> Excluir </button>
+            </td>
+            </tr>
+        `
 
     };
 
 };
 
 function deleteUser(p) {
-    people.splice(p, 1);
+    people.splice (p, 1);
     desenhaTabela();
     localStorage.setItem('people', JSON.stringify(people))
 }
 
-desenhaTabela()
+desenhaTabela();
