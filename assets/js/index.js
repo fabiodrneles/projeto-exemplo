@@ -1,4 +1,36 @@
 
+/*var people = [
+    {
+        name: 'xxxxxxxxxxxxxxxxxxxxx',
+        tel: '5599999-9999',
+        xp: true
+    },
+
+    {
+        name: 'xxxxxxxxxxxxxxxxxxxxx',
+        tel: '5599999-9999',
+        xp: true
+    },
+
+    {
+        name: 'xxxxxxxxxxxxxxxxxxxxx',
+        tel: '5599999-9999',
+        xp: true
+    },
+
+    {
+        name: 'xxxxxxxxxxxxxxxxxxxxx',
+        tel: '5599999-9999',
+        xp: true
+    },
+];
+
+*/
+
+
+
+
+
 var peopleRaw = localStorage.getItem('people')
 if(peopleRaw != null) {
     var people = JSON.parse(localStorage.getItem('people'))
