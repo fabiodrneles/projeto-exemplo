@@ -1,5 +1,3 @@
-let peoples = localStorage.getItem("peoples") ? JSON.parse(localStorage.getItem("peoples")) : [];
-
 // 		name: "Fabio Darci Dorneles",
 // 		tel: "+55 (55) 99999-9999",
 // 		xp: true
@@ -29,6 +27,8 @@ let peoples = localStorage.getItem("peoples") ? JSON.parse(localStorage.getItem(
 // 		xp: false
 // 	}
 // ]
+
+let peoples = localStorage.getItem("peoples") ? JSON.parse(localStorage.getItem("peoples")) : [];
 
 var tableBody = document.querySelector("table.lista tbody");
 
