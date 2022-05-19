@@ -1,77 +1,76 @@
-// 		name: "Fabio Darci Dorneles",
-// 		tel: "+55 (55) 99999-9999",
-// 		xp: true
-// 	},
-//
-// 	{
-// 		name: "Tiffany Beltrão Castanho",
-// 		tel: "+55 (51) 99999-8888",
-// 		xp: false
-// 	},
-//
-// 	{
-// 		name: "Tatiana Azenha Frajuca",
-// 		tel: "+55 (11) 99999-7777",
-// 		xp: true
-// 	},
-//
-// 	{
-// 		name: "Luiz Paulo Barbosa",
-// 		tel: "+55 (14) 99999-6666",
-// 		xp: false
-// 	},
-//
-// 	{
-// 		name: "José Paulo da Silva",
-// 		tel: "+55 (14) 99999-6666",
-// 		xp: false
-// 	}
-// ]
-
 let peoples = localStorage.getItem("peoples") ? JSON.parse(localStorage.getItem("peoples")) : [];
+const letterPattern = /[^0-9]/;
 
-var tableBody = document.querySelector("table.lista tbody");
+function testForm(e) {
+	e.preventDefault();
+
+	let nome = e.target.elements["nome"].value;
+	let telefone = e.target.elements["telefone"].value;
+	let experiencia = e.target.elements["xp"].value == 'true';
+
+	var patternReplace = new RegExp(letterPattern,"g");
+	if(telefone.replace(patternReplace, "").length != 11){
+		alert("Número inválido");
+		return;
+	}
+
+	if(personID !== null) {
+		peoples[personID] = {
+			name: nome,
+			tel: telefone,
+			xp: experiencia
+		}
+	} 
+	else {
+		peoples.push({
+			name: nome,
+			tel: telefone,
+			xp: experiencia
+		});
+	}
+
+	localStorage.setItem("peoples", JSON.stringify(peoples));
+
+	 document.getElementById("home").click();
+
+	/* alert("Dados salvos").click(); */
+}
 
 
-function desenharTabela() {
+function testPhone(e){
+	if (letterPattern.test(e.key) || e.target.value.length >= 15){
+		e.preventDefault();
+		return;
+	}
 
-	currentLines = document.querySelectorAll(".dinamic-content");
-	currentLines.forEach((element) => {
-		element.remove();
-	})
+	if(e.target.value.length == 0){
+		e.target.value += '('
+	}
 
-	for (let [index, person] of peoples.entries()) {
-		let pessoa = 
-        `<tr class="dinamic-content" style="background-color: #${(index % 2 == 0) ? 'fff': 'eee'}" >
-			<td>
-				${person.name}
-			</td>
-			
-			<td>
-				${person.tel}
-			</td>
+	if(e.target.value.length == 3){
+		e.target.value += ') '
+	}
 
-			<td style="color: ${(person.xp ? 'green' : 'red')}" >
-				<strong> ${(person.xp ? "Sim": "Não")} </strong>
-			</td>
-
-			<td>
-				<button onclick="deleteUser(${index})">
-					Excluir
-				</button>
-				<a href="form.html?person=${index}"><button>Editar</button></a>
-			</td>
-
-		</tr>`
-
-		tableBody.innerHTML += pessoa;
+	if(e.target.value.length == 10){
+		e.target.value += '-'
 	}
 }
 
-function deleteUser(index){
-	peoples.splice(index, 1); 
-	desenharTabela(); 
-	localStorage.setItem("peoples", JSON.stringify(peoples));
-}
+var mainURL = new URL(window.location.href);
 
-desenharTabela();
+var personID = mainURL.searchParams.get('person');
+
+if(personID !== null && peoples.length !== 0){
+	let nome = document.getElementById("nome")
+	let telefone = document.getElementById("telefone")
+	
+
+
+	nome.value = peoples[personID].name
+	telefone.value = peoples[personID].tel
+	if(peoples[personID].xp){
+		document.getElementById("experiencia-sim").checked = true;
+	}else{
+		document.getElementById("experiencia-nao").checked = true;
+	}
+}
