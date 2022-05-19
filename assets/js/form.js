@@ -1,57 +1,77 @@
+let peoples = localStorage.getItem("peoples") ? JSON.parse(localStorage.getItem("peoples")) : [];
+
+// 		name: "Fabio Darci Dorneles",
+// 		tel: "+55 (55) 99999-9999",
+// 		xp: true
+// 	},
+//
+// 	{
+// 		name: "Tiffany Beltrão Castanho",
+// 		tel: "+55 (51) 99999-8888",
+// 		xp: false
+// 	},
+//
+// 	{
+// 		name: "Tatiana Azenha Frajuca",
+// 		tel: "+55 (11) 99999-7777",
+// 		xp: true
+// 	},
+//
+// 	{
+// 		name: "Luiz Paulo Barbosa",
+// 		tel: "+55 (14) 99999-6666",
+// 		xp: false
+// 	},
+//
+// 	{
+// 		name: "José Paulo da Silva",
+// 		tel: "+55 (14) 99999-6666",
+// 		xp: false
+// 	}
+// ]
+
+var tableBody = document.querySelector("table.lista tbody");
 
 
+function desenharTabela() {
 
+	currentLines = document.querySelectorAll(".dinamic-content");
+	currentLines.forEach((element) => {
+		element.remove();
+	})
 
-/* function testaFormulario(e) {
-    e.preventDefault();
+	for (let [index, person] of peoples.entries()) {
+		let pessoa = 
+        `<tr class="dinamic-content" style="background-color: #${(index % 2 == 0) ? 'fff': 'eee'}" >
+			<td>
+				${person.name}
+			</td>
+			
+			<td>
+				${person.tel}
+			</td>
 
-    var peopleRaw = localStorage.getItem('people')
-    if (peopleRaw != null) {
-        var people = JSON.stringify(peopleRaw)
-    } else {
-        var people = [];
-    }
+			<td style="color: ${(person.xp ? 'green' : 'red')}" >
+				<strong> ${(person.xp ? "Sim": "Não")} </strong>
+			</td>
 
-    console.log(e.target.elements['xp'].value)
-  if (id !== null) {
-        people[id] = {
-            name: e.target.elements['name'].value,
-            tel: e.target.elements['phone'].value,
-            xp: (e.target.elements['xp'].value == 'true')
-         }
-    } else {
-        people.push({
-            name: e.target.elements['name'].value,
-            tel: e.target.elements['phone'].value,
-            xp: (e.target.elements['xp'].value == 'true')
-        })
-    }
+			<td>
+				<button onclick="deleteUser(${index})">
+					Excluir
+				</button>
+				<a href="form.html?person=${index}"><button>Editar</button></a>
+			</td>
 
-    localStorage.setItem('people', JSON.stringify(people))
+		</tr>`
 
-    document.getElementById('goHome').click()
+		tableBody.innerHTML += pessoa;
+	}
 }
-var urlPrincipal = new URL(window.location.href)
 
-var id = urlPrincipal.searchParams.get('person')
-if (id !== null) {
-    var peopleRaw = localStorage.getItem('person')
-    if (peopleRaw != null) {
-        var people = JSON.parse(peopleRaw)
-    } else {
-        var people = [];
-    }
+function deleteUser(index){
+	peoples.splice(index, 1); 
+	desenharTabela(); 
+	localStorage.setItem("peoples", JSON.stringify(peoples));
+}
 
-
-
-    console.log(people[id])
-
-    document.getElementById('name').value = people[id].name
-    document.getElementById('phone').value = people[id].tel
-    if (people[id].xp) {
-        document.getElementById('xp-yes').checked = true
-    } else {
-        document.getElementById('xp-no').checked = true
-    }
-
-} */
+desenharTabela();
