@@ -1,4 +1,3 @@
-
 // 		name: "Fabio Darci Dorneles",
 // 		tel: "+55 (55) 99999-9999",
 // 		xp: true
