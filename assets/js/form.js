@@ -68,7 +68,7 @@ if(personID !== null && peoples.length !== 0){
 
 	nome.value = peoples[personID].name
 	telefone.value = peoples[personID].tel
-	if(peoples[personID].xp){
+	if (peoples[personID].xp) {
 		document.getElementById("experiencia-sim").checked = true;
 	}else{
 		document.getElementById("experiencia-nao").checked = true;

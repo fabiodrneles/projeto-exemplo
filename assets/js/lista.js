@@ -58,8 +58,8 @@ function desenharTabela() {
 
 			<td>
 				<button onclick="deleteUser(${index})"> Excluir </button>
-				<a href="/form.html?person=${index}"> 
-                <button> Editar </button> </a>
+				<a href="/form.html?person=${index}">
+				<button> Editar </button> </a>
 			</td>
 
 		</tr>`
